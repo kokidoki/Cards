@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.card {
+			width: 113px;
+			height: 150px;
+			display: inline-block;
+		}
+	</style>
+	<title>Cards</title>
+</head>
+<body>
+	<input type="button" name="shuffleButton" onclick="shuffleCards()" style="display: block;" value="Shuffle">
+	<br>
+	<div id="cardImgs">
+		<img src="7Clubs.png" class="card">
+		<img src="10Spades.jpg" class="card">
+		<img src="AceHearts.png" class="card">
+		<img src="AceSpades.jpg" class="card">
+		<img src="KingHearts.png" class="card">
+		<img src="KingSpades.jpg" class="card">
+	</div>
+
+	<script type="text/javascript">
+		function shuffleCards() {
+			var imgNodesArray = [];
+			var imgNodes = document.querySelectorAll("img");
+			for(var x = 0; x < imgNodes.length; x++) {
+				imgNodesArray[x] = imgNodes.item(x);
+			}
+			imgNodesArray.sort(function(a, b) {
+				return Math.random() - 0.5;
+			});
+			var cardNode = document.getElementById("cardImgs")
+			cardNode.innerHTML = ""
+			for(var x = 0; x < imgNodes.length; x++) {
+				cardNode.appendChild(imgNodesArray[x]);
+			}
+		}
+		// var example = [1, 2, 3, 9, 7, 3 ,87, 234];
+		// console.log(example.sort(function(item1, item2){
+		// 	return Math.random() - 0.5;
+		// }));
+	</script>
+</body>
+</html>
